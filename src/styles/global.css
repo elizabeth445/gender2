@@ -181,7 +181,7 @@ h1 em {
   height: 122px;
   width: 350px;
   max-width: 100%;
-  margin: 8px auto 0;
+  margin: 24px auto 0;
   position: relative;
   display: grid;
   place-items: center;
@@ -189,6 +189,12 @@ h1 em {
 .hero-answer {
   opacity: 0;
   position: relative;
+  grid-area: 1 / 1;
+}
+.invitation-reveal > .open-button {
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 1;
 }
 .hero-answer p + p {
   margin-top: 4px;
@@ -201,7 +207,7 @@ h1 em {
 }
 .leaf-seal {
   position: absolute;
-  inset: 0;
+  inset: -24px 0 -32px;
   display: flex;
   justify-content: center;
   pointer-events: none;
@@ -211,7 +217,7 @@ h1 em {
   position: absolute;
   width: 155px;
   height: 155px;
-  top: -10px;
+  top: 14px;
 }
 .opening-leaf-left {
   left: 39px;
@@ -252,6 +258,9 @@ h1 em {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.hero:not(.is-open) .opening-controls {
+  margin-top: 24px;
 }
 .opening-controls button {
   padding: 7px 10px;
@@ -501,7 +510,7 @@ h1 em {
   }
   .invitation-reveal {
     height: 112px;
-    margin-top: 5px;
+    margin-top: 22px;
     width: 300px;
   }
   .question {

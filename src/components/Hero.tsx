@@ -87,16 +87,17 @@ export function Hero() {
             <Artwork name="foliage" className="opening-leaf-left" eager />
             <Artwork name="foliage" className="opening-leaf-right" eager />
           </div>
+          {!opened ? (
+            <button className="button primary open-button" onClick={() => open()}>
+              Відкрити запрошення
+            </button>
+          ) : null}
         </div>
-        {!opened ? (
-          <button className="button primary open-button" onClick={() => open()}>
-            Відкрити запрошення <span aria-hidden="true">↗</span>
-          </button>
-        ) : (
+        {opened ? (
           <a className="button primary open-button" href="#story">
             Наша маленька історія <span aria-hidden="true">↓</span>
           </a>
-        )}
+        ) : null}
         <div className="opening-controls">
           {busy ? (
             <button onClick={() => timeline.current?.progress(1)}>Пропустити анімацію</button>
