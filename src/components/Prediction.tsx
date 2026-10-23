@@ -6,8 +6,8 @@ import { readSaved, saveLocal } from '../lib/storage';
 import { useMotionPreference } from '../hooks/useMotionPreference';
 type Prediction = 'boy' | 'girl';
 const options = [
-  { value: 'boy', label: 'Хлопчик', animal: 'giraffe', note: 'Маленький дослідник' },
-  { value: 'girl', label: 'Дівчинка', animal: 'elephant', note: 'Маленька мрійниця' },
+  { value: 'boy', label: 'Хлопчик', animal: 'elephant-blue', note: 'Маленький дослідник' },
+  { value: 'girl', label: 'Дівчинка', animal: 'elephant-pink', note: 'Маленька мрійниця' },
 ] as const;
 export function Prediction() {
   const [choice, setChoice] = useState<Prediction | null>(() =>
@@ -22,9 +22,15 @@ export function Prediction() {
     setStored(saveLocal('prediction', value));
     if (!reduce) {
       gsap.fromTo(
-        `[data-choice="${value}"]`,
-        { rotation: value === 'boy' ? -3 : 3, y: 0 },
-        { rotation: 0, y: -5, duration: 0.6, ease: 'back.out(1.4)', overwrite: true },
+        `[data-choice="${value}"] .tag-art`,
+        { scale: 0.94 },
+        {
+          scale: 1,
+          duration: 0.6,
+          ease: 'back.out(1.4)',
+          overwrite: true,
+          clearProps: 'transform',
+        },
       );
       gsap.fromTo(
         '.prediction-response',

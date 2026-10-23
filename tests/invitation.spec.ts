@@ -200,6 +200,16 @@ for (const width of [320, 390, 768, 1024, 1440]) {
       '.closing',
     ]) {
       await page.locator(section).scrollIntoViewIfNeeded();
+      if (section === '#prediction') {
+        const cards = await page.locator('.prediction-tag').evaluateAll((elements) =>
+          elements.map((element) => {
+            const { top, height } = element.getBoundingClientRect();
+            return { top, height };
+          }),
+        );
+        expect(Math.abs(cards[0].top - cards[1].top)).toBeLessThanOrEqual(1);
+        expect(Math.abs(cards[0].height - cards[1].height)).toBeLessThanOrEqual(1);
+      }
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
         section,

@@ -178,8 +178,8 @@ h1 em {
   margin-top: 26px;
 }
 .invitation-reveal {
-  height: 122px;
-  width: 350px;
+  height: 185px;
+  width: 440px;
   max-width: 100%;
   margin: 24px auto 0;
   position: relative;
@@ -195,6 +195,9 @@ h1 em {
   grid-area: 1 / 1;
   position: relative;
   z-index: 1;
+  min-height: 68px;
+  padding: 18px 38px;
+  font-size: 16px;
 }
 .hero-answer p + p {
   margin-top: 4px;
@@ -207,7 +210,7 @@ h1 em {
 }
 .leaf-seal {
   position: absolute;
-  inset: -24px 0 -32px;
+  inset: -24px 0 -48px;
   display: flex;
   justify-content: center;
   pointer-events: none;
@@ -215,16 +218,16 @@ h1 em {
 }
 .leaf-seal .art {
   position: absolute;
-  width: 155px;
-  height: 155px;
+  width: 220px;
+  height: 220px;
   top: 14px;
 }
 .opening-leaf-left {
-  left: 39px;
+  left: 48px;
   transform: rotate(-35deg);
 }
 .opening-leaf-right {
-  right: 39px;
+  right: 48px;
   transform: scaleX(-1) rotate(-35deg);
 }
 .button {
@@ -260,7 +263,7 @@ h1 em {
   align-items: center;
 }
 .hero:not(.is-open) .opening-controls {
-  margin-top: 24px;
+  margin-top: 38px;
 }
 .opening-controls button {
   padding: 7px 10px;
@@ -348,7 +351,7 @@ h1 em {
 }
 .section {
   position: relative;
-  max-width: 1180px;
+  max-width: 1280px;
   padding: 110px 48px;
   margin: auto;
 }
@@ -387,14 +390,14 @@ h1 em {
 }
 .story-copy .lead {
   font-family: var(--display);
-  font-size: 25px;
+  font-size: 29px;
   line-height: 1.4;
   color: var(--forest);
   margin-top: 30px;
 }
 .story-copy > p:not(.lead) {
-  max-width: 380px;
-  font-size: 14px;
+  max-width: 440px;
+  font-size: 17px;
   line-height: 1.9;
 }
 .signature {
@@ -509,9 +512,14 @@ h1 em {
     font-size: 13px;
   }
   .invitation-reveal {
-    height: 112px;
+    height: 148px;
     margin-top: 22px;
-    width: 300px;
+    width: 340px;
+  }
+  .invitation-reveal > .open-button {
+    min-height: 60px;
+    padding: 16px 28px;
+    font-size: 13px;
   }
   .question {
     font-size: 26px;
@@ -520,14 +528,14 @@ h1 em {
     font-size: 11px;
   }
   .leaf-seal .art {
-    width: 140px;
-    height: 140px;
+    width: 180px;
+    height: 180px;
   }
   .opening-leaf-left {
-    left: 30px;
+    left: 20px;
   }
   .opening-leaf-right {
-    right: 30px;
+    right: 20px;
   }
   .button {
     min-height: 54px;

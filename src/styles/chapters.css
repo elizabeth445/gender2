@@ -12,6 +12,31 @@
 .book-chapters {
   position: relative;
 }
+.botanical-sprig {
+  pointer-events: none;
+  color: var(--forest);
+}
+.story-sprig {
+  position: absolute;
+  width: 110px;
+  height: 175px;
+  opacity: 0.3;
+}
+.story-sprig-top {
+  right: 44px;
+  top: 32px;
+  transform: rotate(34deg);
+}
+.story-sprig-bottom {
+  left: 33%;
+  bottom: 25px;
+  width: 80px;
+  height: 125px;
+  transform: rotate(-55deg);
+}
+.story-copy {
+  position: relative;
+}
 .story-vine {
   position: absolute;
   left: max(9px, calc((100% - 1270px) / 2));
@@ -74,7 +99,7 @@
   max-width: 400px;
 }
 .prediction-heading > p {
-  font-size: 14px;
+  font-size: 17px;
   margin-top: 26px;
 }
 .prediction-note {
@@ -89,29 +114,27 @@
   display: flex;
   justify-content: center;
   gap: 23px;
-  align-items: center;
+  align-items: stretch;
 }
 .prediction-tag {
   position: relative;
-  width: 205px;
-  min-height: 305px;
-  border: 1px solid #c3c9ad;
+  width: 235px;
+  min-width: 0;
+  min-height: 355px;
+  border: 2px solid #c3c9ad;
   background: var(--paper-light);
   padding: 36px 15px 18px;
   border-radius: 48% 48% 3px 3px / 18% 18% 1px 1px;
   text-align: center;
   box-shadow: 3px 5px 0 #d8d6c533;
-  transform: rotate(-4deg);
   transition:
     border-color 0.2s,
     background 0.2s,
     box-shadow 0.2s;
 }
 .prediction-tag:nth-child(2) {
-  transform: rotate(5deg);
   background: #f1ebdd;
-  border-color: #d6c19b;
-  margin-top: 30px;
+  border-color: #d7b7ad;
 }
 .prediction-tag:hover {
   border-color: var(--forest);
@@ -143,7 +166,7 @@
   transform-origin: bottom;
 }
 .tag-art {
-  height: 150px;
+  height: 185px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,19 +176,16 @@
   max-width: 100%;
   width: auto;
 }
-.prediction-tag:nth-child(2) .tag-art .art {
-  height: 125px;
-}
 .tag-title {
   display: block;
   font-family: var(--display);
-  font-size: 31px;
+  font-size: 35px;
   color: var(--forest);
   line-height: 1.3;
   margin-top: 9px;
 }
 .tag-note {
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   display: block;
   margin-top: 5px;
@@ -188,9 +208,9 @@
 }
 .prediction-response {
   min-height: 100px;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
-  max-width: 360px;
+  max-width: 420px;
   text-align: center;
   margin: 32px auto 0;
   display: flex;
@@ -202,7 +222,7 @@
   margin: 0;
 }
 .prediction-response p > span {
-  font-size: 10px;
+  font-size: 13px;
 }
 .small-sprout {
   font-size: 25px;
@@ -215,9 +235,9 @@
 }
 .details-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
-  min-height: 640px;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 80px;
+  min-height: 740px;
   align-items: center;
 }
 .details-heading {
@@ -229,7 +249,7 @@
   padding-top: 0;
 }
 .details-heading h2 {
-  font-size: clamp(46px, 4.7vw, 66px);
+  font-size: clamp(46px, 5vw, 74px);
 }
 .details-leaf {
   width: 210px;
@@ -239,7 +259,7 @@
   align-self: center;
 }
 .countdown-label {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--forest);
 }
 .countdown {
@@ -269,14 +289,14 @@
 }
 .countdown-number {
   font-family: var(--display);
-  font-size: clamp(38px, 4.3vw, 60px);
+  font-size: clamp(38px, 4.8vw, 72px);
   color: var(--forest);
   font-variant-numeric: tabular-nums;
   line-height: 1.2;
   letter-spacing: -1px;
 }
 .countdown-unit {
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 0.5px;
   margin-top: 7px;
   color: var(--forest);
@@ -294,19 +314,19 @@
 }
 .event-facts p {
   font-family: var(--display);
-  font-size: 24px;
+  font-size: 30px;
   line-height: 1.3;
 }
 .event-facts div > span:last-child {
-  font-size: 11px;
+  font-size: 15px;
   line-height: 1.7;
   display: block;
   margin-top: 8px;
 }
 .arrival-note {
-  font-size: 11px;
+  font-size: 15px;
   line-height: 1.8;
-  max-width: 355px;
+  max-width: 480px;
   margin-top: 27px;
 }
 .detail-actions {
@@ -318,9 +338,9 @@
 }
 .detail-actions .button {
   background: transparent;
-  font-size: 11px;
+  font-size: 14px;
   padding: 12px 20px;
-  min-height: 50px;
+  min-height: 56px;
 }
 .detail-actions .button:hover {
   background: #d5dcc6;
@@ -352,7 +372,7 @@
     min-height: 280px;
   }
   .tag-art {
-    height: 130px;
+    height: 145px;
   }
   .tag-title {
     font-size: 28px;
@@ -434,9 +454,6 @@
   }
   .tag-art {
     height: 130px;
-  }
-  .prediction-tag:nth-child(2) .tag-art .art {
-    height: 110px;
   }
   .tag-title {
     font-size: 29px;
@@ -527,9 +544,6 @@
   }
   .tag-art {
     height: 110px;
-  }
-  .prediction-tag:nth-child(2) .tag-art .art {
-    height: 90px;
   }
   .tag-title {
     font-size: 25px;
@@ -679,21 +693,21 @@
   border-bottom: 1px solid var(--rule);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 85px;
+  gap: 65px;
   align-items: center;
-  min-height: 560px;
+  min-height: 670px;
   padding-top: 60px;
   padding-bottom: 60px;
 }
 .surprise-scene {
-  height: 380px;
+  height: 505px;
   position: relative;
   isolation: isolate;
 }
 .surprise-monkey {
   position: absolute;
-  height: 340px;
-  width: 240px;
+  height: 455px;
+  width: 310px;
   left: 0;
   top: 0;
   object-position: left center;
@@ -701,45 +715,54 @@
 }
 .surprise-leaf {
   position: absolute;
-  width: 215px;
-  height: 260px;
+  width: 280px;
+  height: 300px;
   right: 0;
-  top: 140px;
+  top: 195px;
   transform-origin: 50% 100%;
   z-index: 3;
 }
 .surprise-secret {
   position: absolute;
-  right: -8px;
-  top: 190px;
+  right: 0;
+  top: 245px;
   text-align: center;
-  width: 220px;
+  width: 260px;
   background: #f6f3e7;
   border-radius: 50%;
   padding: 18px 8px;
 }
 .surprise-secret p {
   font-family: var(--display);
-  font-size: 26px;
+  font-size: 32px;
   line-height: 1.2;
   color: var(--forest);
 }
 .surprise-secret span {
-  font-size: 9px;
+  font-size: 13px;
   display: block;
   margin-top: 13px;
 }
 .surprise h2 {
-  font-size: 48px;
+  font-size: clamp(48px, 4.4vw, 66px);
   letter-spacing: -1.3px;
   margin-top: 0;
 }
 .surprise-copy > p {
-  font-size: 13px;
+  font-size: 17px;
   margin-top: 23px;
 }
 .surprise-copy .text-link {
   margin-top: 15px;
+  font-size: 15px;
+}
+.surprise-sprig {
+  display: block;
+  width: 140px;
+  height: 110px;
+  margin: 24px 0 0 30px;
+  opacity: 0.45;
+  transform: rotate(58deg);
 }
 .rsvp-section {
   background: #ede7d9;
@@ -750,17 +773,17 @@
   grid-template-columns: 0.9fr 1.1fr;
   gap: 100px;
   align-items: start;
-  min-height: 720px;
+  min-height: 800px;
 }
 .rsvp-heading > p {
-  font-size: 13px;
+  font-size: 17px;
   margin-top: 27px;
 }
 .rsvp-heading h2 {
-  font-size: 74px;
+  font-size: 84px;
 }
 .rsvp-heading .rsvp-deadline {
-  font-size: 11px;
+  font-size: 15px;
   line-height: 1.8;
   margin-top: 35px;
   color: var(--muted);
@@ -781,7 +804,7 @@
 }
 .form-field label,
 fieldset legend {
-  font-size: 12px;
+  font-size: 15px;
   display: block;
   color: var(--cocoa);
 }
@@ -799,7 +822,7 @@ fieldset legend > span {
   border-radius: 0;
   padding: 13px 0;
   color: var(--cocoa);
-  font-size: 14px;
+  font-size: 17px;
   line-height: 1.7;
   display: block;
   resize: vertical;
@@ -813,7 +836,7 @@ fieldset legend > span {
 .form-field textarea::placeholder {
   color: #746f61;
   opacity: 1;
-  font-size: 12px;
+  font-size: 15px;
 }
 .form-field input[aria-invalid='true'] {
   border-color: #9a4a37;
@@ -846,7 +869,7 @@ fieldset {
   gap: 9px;
   align-items: center;
   min-height: 44px;
-  font-size: 11px;
+  font-size: 15px;
   cursor: pointer;
 }
 .attendance-options input {
@@ -857,7 +880,7 @@ fieldset {
   flex-shrink: 0;
 }
 .optional {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   margin-left: 7px;
 }
@@ -866,11 +889,11 @@ fieldset {
   gap: 37px;
 }
 .local-note {
-  font-size: 10px !important;
+  font-size: 12px !important;
   line-height: 1.8;
   color: var(--muted);
   margin-top: 19px;
-  max-width: 370px;
+  max-width: 470px;
 }
 .rsvp-confirmation {
   min-height: 400px;
@@ -890,7 +913,7 @@ fieldset {
   overflow-wrap: anywhere;
 }
 .rsvp-confirmation > p:not(.local-note) {
-  font-size: 14px;
+  font-size: 17px;
   margin-top: 23px;
 }
 .rsvp-confirmation .text-link {
@@ -1066,28 +1089,28 @@ fieldset {
     gap: 40px;
   }
   .surprise-scene {
-    height: 340px;
+    height: 420px;
   }
   .surprise-monkey {
-    width: 180px;
-    height: 290px;
+    width: 225px;
+    height: 365px;
   }
   .surprise-leaf {
-    width: 170px;
-    height: 220px;
+    width: 210px;
+    height: 250px;
     right: -5px;
-    top: 130px;
+    top: 165px;
   }
   .surprise-secret {
-    width: 170px;
+    width: 200px;
     right: -5px;
-    top: 170px;
+    top: 270px;
   }
   .surprise-secret p {
     font-size: 23px;
   }
   .surprise h2 {
-    font-size: 40px;
+    font-size: 46px;
     margin-top: 0;
   }
   .rsvp-inner {
@@ -1131,6 +1154,24 @@ fieldset {
     width: 12px;
     height: 23px;
     left: 3px;
+  }
+  .story-sprig-top {
+    width: 65px;
+    height: 105px;
+    right: 30px;
+    top: 8px;
+    opacity: 0.2;
+  }
+  .story-sprig-bottom {
+    width: 60px;
+    height: 100px;
+    left: 32px;
+    bottom: 35px;
+  }
+  .surprise-sprig {
+    width: 95px;
+    height: 70px;
+    margin: 16px 0 0 15px;
   }
   .schedule {
     display: block;
@@ -1202,34 +1243,34 @@ fieldset {
     margin-top: 0;
   }
   .surprise-copy > p {
-    font-size: 12px;
+    font-size: 15px;
   }
   .surprise-copy .text-link {
     min-height: 44px;
     margin-top: 12px;
   }
   .surprise-scene {
-    height: 325px;
+    height: 390px;
     width: 100%;
-    max-width: 330px;
+    max-width: 360px;
     align-self: center;
   }
   .surprise-monkey {
-    left: -5px;
+    left: -25px;
     top: 0;
-    width: 200px;
-    height: 315px;
+    width: 230px;
+    height: 365px;
   }
   .surprise-leaf {
     right: 5px;
-    top: 140px;
-    height: 180px;
-    width: 165px;
+    top: 175px;
+    height: 210px;
+    width: 205px;
   }
   .surprise-secret {
-    width: 172px;
+    width: 195px;
     right: -3px;
-    top: 165px;
+    top: 270px;
     padding: 13px 6px;
   }
   .surprise-secret p {
@@ -1252,12 +1293,12 @@ fieldset {
     font-size: 58px;
   }
   .rsvp-heading > p {
-    font-size: 13px;
+    font-size: 15px;
     margin-top: 22px;
   }
   .rsvp-heading .rsvp-deadline {
     margin-top: 23px;
-    font-size: 11px;
+    font-size: 13px;
   }
   .rsvp-heading > .botanical-mark {
     display: none;
@@ -1275,7 +1316,7 @@ fieldset {
   }
   .form-field label,
   fieldset legend {
-    font-size: 12px;
+    font-size: 14px;
   }
   .form-field input,
   .form-field textarea {
@@ -1283,7 +1324,7 @@ fieldset {
   }
   .form-field input::placeholder,
   .form-field textarea::placeholder {
-    font-size: 12px;
+    font-size: 14px;
   }
   .form-field textarea {
     min-height: 110px;
@@ -1298,7 +1339,7 @@ fieldset {
     margin-top: 27px;
   }
   .local-note {
-    font-size: 10px !important;
+    font-size: 11px !important;
     line-height: 1.7;
   }
   .rsvp-confirmation {
@@ -1336,7 +1377,7 @@ fieldset {
     margin-top: 10px;
   }
   .closing-butterfly {
-    right: 0;
+    right: 60px;
     top: 115px;
     width: 30px;
     height: 30px;
@@ -1352,6 +1393,7 @@ fieldset {
     height: 210px;
     right: -2%;
     bottom: 70px;
+    z-index: 1;
   }
   .closing-leaf {
     width: 210px;
@@ -1362,7 +1404,10 @@ fieldset {
     left: -95px;
   }
   .closing-leaf-right {
-    right: -100px;
+    right: -125px;
+    bottom: 32px;
+    width: 185px;
+    height: 155px;
   }
   .colophon {
     left: 26px;
@@ -1384,7 +1429,7 @@ fieldset {
     line-height: 1.5;
   }
   .tag-note {
-    font-size: 9px;
+    font-size: 11px;
     min-height: 30px;
     line-height: 1.6;
     margin-top: 5px;
@@ -1455,22 +1500,22 @@ fieldset {
     margin-top: 0;
   }
   .surprise-scene {
-    height: 300px;
+    height: 340px;
   }
   .surprise-monkey {
-    width: 175px;
-    height: 280px;
+    width: 200px;
+    height: 315px;
   }
   .surprise-leaf {
-    width: 148px;
-    height: 180px;
-    top: 120px;
-    right: -2px;
+    width: 175px;
+    height: 190px;
+    top: 145px;
+    right: 0;
   }
   .surprise-secret {
-    width: 153px;
-    right: -7px;
-    top: 150px;
+    width: 165px;
+    right: 0;
+    top: 230px;
   }
   .surprise-secret p {
     font-size: 23px;
@@ -1499,7 +1544,7 @@ fieldset {
     font-size: 10px;
   }
   .tag-note {
-    font-size: 8px;
+    font-size: 10px;
   }
   .prediction-tag {
     min-height: 260px;
@@ -1512,6 +1557,57 @@ fieldset {
   }
   .closing-date {
     font-size: 10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+  h2 {
+    font-size: clamp(56px, 5.6vw, 80px);
+  }
+  nav,
+  .text-link,
+  .button {
+    font-size: 15px;
+  }
+  .hero-intro {
+    font-size: 17px;
+  }
+  .hero-bottom,
+  .hero-bottom a,
+  .opening-controls button {
+    font-size: 13px;
+  }
+  .signature > span,
+  .countdown-unit,
+  .fact-label,
+  .schedule-list p,
+  .closing-date {
+    font-size: 14px;
+  }
+  .countdown-label {
+    font-size: 16px;
+  }
+  .schedule-heading > p {
+    font-size: 17px;
+  }
+  .schedule-list h3 {
+    font-size: 28px;
+  }
+  .schedule-list time {
+    font-size: 24px;
+  }
+  .form-field .field-error,
+  fieldset .field-error {
+    font-size: 13px;
+  }
+  .closing-quote {
+    font-size: 27px;
+  }
+  .colophon {
+    font-size: 12px;
   }
 }
 

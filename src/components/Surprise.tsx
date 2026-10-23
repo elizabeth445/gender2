@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { Artwork } from './Artwork';
+import { Artwork, BotanicalSprig } from './Artwork';
 import { useMotionPreference } from '../hooks/useMotionPreference';
 export function Surprise() {
   const [revealed, setRevealed] = useState(false);
@@ -68,6 +68,7 @@ export function Surprise() {
         <span className="sr-only" role="status">
           {revealed ? 'Найцікавіше ще попереду!' : ''}
         </span>
+        <BotanicalSprig className="surprise-sprig" />
       </div>
     </aside>
   );

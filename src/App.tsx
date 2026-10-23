@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Artwork, BotanicalMark } from './components/Artwork';
+import { Artwork, BotanicalMark, BotanicalSprig } from './components/Artwork';
 import { Header, Hero } from './components/Hero';
 import { Prediction } from './components/Prediction';
 import { EventDetails } from './components/EventDetails';
@@ -31,6 +31,8 @@ export default function App() {
         <div className="book-chapters">
           <StoryVine />
           <section className="story section" id="story" aria-labelledby="story-title">
+            <BotanicalSprig className="story-sprig story-sprig-top" />
+            <BotanicalSprig className="story-sprig story-sprig-bottom" />
             <div className="story-picture">
               <div className="illustration-wash" />
               <Artwork name="elephant" />
