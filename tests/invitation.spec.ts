@@ -91,11 +91,14 @@ test('calendar download has correct UTC time, CRLF and UTF-8 folding', async ({ 
 });
 
 test('blocked storage is reported honestly and does not crash', async ({ page }) => {
-  await page.evaluate(() => {
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await page.addInitScript(() => {
     Storage.prototype.setItem = () => {
       throw new DOMException('Denied', 'SecurityError');
     };
   });
+  await page.reload();
   await page.locator('[data-choice="boy"]').click();
   await expect(page.getByText('Браузер не дозволяє зберегти його після закриття.')).toBeVisible();
   await page.getByLabel('Ваше ім’я').fill('Олексій');
@@ -104,6 +107,7 @@ test('blocked storage is reported honestly and does not crash', async ({ page })
   await expect(page.locator('.rsvp-confirmation .local-note')).toContainText(
     'Браузер не дозволяє зберегти відповідь',
   );
+  expect(errors).toEqual([]);
 });
 
 test('countdown reaches zero without negative values', async ({ page }) => {
