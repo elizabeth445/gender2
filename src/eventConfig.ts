@@ -1,0 +1,50 @@
+export const eventConfig = {
+  id: 'jungle-2027',
+  title: 'Маленьке диво в джунглях',
+  parents: 'Олена та Артем',
+  dateLabel: '22 травня 2027 року',
+  shortDate: '22.05.2027',
+  time: '15:00',
+  timeZone: 'Europe/Kyiv',
+  // Kyiv summer offset for the demo date. Change together with the event date.
+  startsAt: '2027-05-22T15:00:00+03:00',
+  endsAt: '2027-05-22T18:00:00+03:00',
+  city: 'Київ',
+  location: 'Локацію повідомимо окремо',
+  address: '',
+  directionsUrl: '',
+  arrivalNote: 'Приходьте трішки раніше, щоб обійнятися й налаштуватися на диво.',
+  rsvpDeadline: '10 травня 2027 року',
+  schedule: [
+    {
+      time: '15:00',
+      title: 'Зустрічаємо гостей',
+      detail: 'Обійми, усмішки та перші фото',
+      mark: 'sun',
+    },
+    {
+      time: '15:30',
+      title: 'Смаколики та спілкування',
+      detail: 'Щось смачненьке й найтепліші розмови',
+      mark: 'fruit',
+    },
+    {
+      time: '16:00',
+      title: 'Ігри й передбачення',
+      detail: 'Довіримося інтуїції та трішки пограємо',
+      mark: 'leaf',
+    },
+    {
+      time: '16:30',
+      title: 'Головний сюрприз',
+      detail: 'Та сама мить, на яку всі так чекають',
+      mark: 'star',
+    },
+    {
+      time: '17:00',
+      title: 'Святкуємо разом',
+      detail: 'Збережемо цей день у нашій історії',
+      mark: 'heart',
+    },
+  ],
+};

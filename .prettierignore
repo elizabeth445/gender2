@@ -1,0 +1,14 @@
+node_modules
+dist
+output
+playwright-report
+test-results
+package-lock.json
+.vercel
+.cache
+.vite
+.npm
+coverage
+tmp
+temp
+__pycache__

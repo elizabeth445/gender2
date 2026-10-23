@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'Bona Nova';
+  src: url('/fonts/BonaNova-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Bona Nova';
+  src: url('/fonts/BonaNova-Italic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Marmelad;
+  src: url('/fonts/Marmelad-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Neucha;
+  src: url('/fonts/Neucha.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+:root {
+  --paper: #f3efe5;
+  --paper-light: #faf7ef;
+  --forest: #4a6042;
+  --leaf: #8fa66e;
+  --honey: #c4a370;
+  --clay: #d59d87;
+  --cocoa: #493d32;
+  --muted: #655f4e;
+  --rule: #c8c9b2;
+  --display: 'Bona Nova', Georgia, serif;
+  --body: Marmelad, sans-serif;
+  --hand: Neucha, cursive;
+}

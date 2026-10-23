@@ -1,0 +1,33 @@
+# Dependencies and build output
+node_modules/
+/dist/
+/coverage/
+
+# Generated checks and local tools
+/output/
+/playwright-report/
+/test-results/
+/.vercel/
+.cache/
+.vite/
+.turbo/
+__pycache__/
+*.py[cod]
+*.tsbuildinfo
+
+# Local environment and logs
+.env*
+!.env.example
+*.log
+.npm/
+
+# Temporary and OS/editor files; intentional source snapshots stay trackable
+/tmp/
+/temp/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
