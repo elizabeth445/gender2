@@ -86,8 +86,8 @@ test('monkey moves independently of its branch and reduced motion restores the r
   await expect(page.locator('.monkey-character')).toHaveCSS('opacity', '1');
   const restingOffset = await page.evaluate(() => {
     const character = document.querySelector('.monkey-character')!.getBoundingClientRect();
-    const branch = document.querySelector('.monkey-branch')!.getBoundingClientRect();
-    return Math.abs(character.y - branch.y - branch.height * 0.04);
+    const frame = document.querySelector('.surprise-monkey')!.getBoundingClientRect();
+    return Math.abs(character.y - frame.y - frame.height * 0.04);
   });
   expect(restingOffset).toBeLessThanOrEqual(1);
 });

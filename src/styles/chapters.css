@@ -686,6 +686,7 @@
   color: var(--forest);
 }
 .surprise {
+  --branch-scale: 2.8;
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
   display: grid;
@@ -700,6 +701,16 @@
   height: 505px;
   position: relative;
   isolation: isolate;
+}
+.surprise-reveal {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+  z-index: 3;
+  pointer-events: none;
+}
+.surprise-reveal > .surprise-leaf {
+  pointer-events: auto;
 }
 .surprise-monkey {
   position: absolute;
@@ -722,6 +733,15 @@
 .monkey-character {
   transform: translateY(4%);
   transform-origin: 51% 15%;
+}
+.monkey-branch {
+  transform: rotate(-10deg) scale(var(--branch-scale));
+  transform-origin: 51% 22%;
+}
+@media (max-width: 1279px) {
+  .surprise {
+    --branch-scale: 2.15;
+  }
 }
 .surprise-leaf {
   position: absolute;
@@ -1095,6 +1115,7 @@ fieldset {
     font-size: 19px;
   }
   .surprise {
+    --branch-scale: 1.9;
     gap: 40px;
   }
   .surprise-scene {
@@ -1235,6 +1256,7 @@ fieldset {
     right: 4px;
   }
   .surprise {
+    --branch-scale: 2;
     display: flex;
     flex-direction: column-reverse;
     gap: 12px;
@@ -1621,8 +1643,10 @@ fieldset {
   }
 }
 
-.surprise-scene {
-  overflow: clip;
+@media (max-width: 479px) {
+  .surprise {
+    --branch-scale: 1.5;
+  }
 }
 .surprise-leaf {
   border: 0;

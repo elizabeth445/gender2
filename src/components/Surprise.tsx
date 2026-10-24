@@ -65,23 +65,25 @@ export function Surprise() {
             loading="lazy"
           />
         </div>
-        <div className="surprise-secret" id="surprise-secret" aria-hidden={!revealed}>
-          <p>
-            Найцікавіше
-            <br />
-            <em>ще попереду!</em>
-          </p>
-          <span>І воно варте очікування.</span>
+        <div className="surprise-reveal">
+          <div className="surprise-secret" id="surprise-secret" aria-hidden={!revealed}>
+            <p>
+              Найцікавіше
+              <br />
+              <em>ще попереду!</em>
+            </p>
+            <span>І воно варте очікування.</span>
+          </div>
+          <button
+            className="surprise-leaf"
+            aria-label={revealed ? 'Закрити листочок' : 'Відкрити листочок'}
+            aria-expanded={revealed}
+            aria-controls="surprise-secret"
+            onClick={() => setRevealed(!revealed)}
+          >
+            <Artwork name="foliage" />
+          </button>
         </div>
-        <button
-          className="surprise-leaf"
-          aria-label={revealed ? 'Закрити листочок' : 'Відкрити листочок'}
-          aria-expanded={revealed}
-          aria-controls="surprise-secret"
-          onClick={() => setRevealed(!revealed)}
-        >
-          <Artwork name="foliage" />
-        </button>
       </div>
       <div className="surprise-copy">
         <h2>
