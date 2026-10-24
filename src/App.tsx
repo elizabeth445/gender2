@@ -35,6 +35,16 @@ export default function App() {
             <BotanicalSprig className="story-sprig story-sprig-bottom" />
             <div className="story-picture">
               <div className="illustration-wash" />
+              <img
+                className="story-balloon"
+                src="/art/nursery-balloon.webp"
+                width="400"
+                height="600"
+                style={{ aspectRatio: '2 / 3' }}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+              />
               <Artwork name="elephant" />
               <p className="handwritten">Диво вже зовсім близько…</p>
             </div>

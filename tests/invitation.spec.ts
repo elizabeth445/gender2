@@ -37,6 +37,61 @@ test('prediction persists and can change, with no fake counters', async ({ page 
   await expect(page.locator('.prediction-response')).not.toContainText('%');
 });
 
+test('ear flutter stops on live reduced motion and feedback stays centred', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.locator('[data-choice="boy"]').click();
+  const ears = page.locator('[data-choice="boy"] .ear-flutter');
+  await expect.poll(async () => Number(await ears.getAttribute('scale'))).not.toBe(0);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(ears).toHaveAttribute('scale', '0');
+  await expect(page.locator('.prediction-note')).toHaveCSS('transform', 'none');
+  const centres = await page.evaluate(() => {
+    const options = document.querySelector('.prediction-options')!.getBoundingClientRect();
+    const response = document.querySelector('.prediction-response p')!.getBoundingClientRect();
+    return [options.x + options.width / 2, response.x + response.width / 2];
+  });
+  expect(Math.abs(centres[0] - centres[1])).toBeLessThanOrEqual(1);
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.locator('[data-choice="girl"]').click();
+  const otherEars = page.locator('[data-choice="girl"] .ear-flutter');
+  await expect.poll(async () => Number(await otherEars.getAttribute('scale'))).not.toBe(0);
+  await expect(otherEars).toHaveAttribute('scale', '0');
+});
+
+test('monkey moves independently of its branch and reduced motion restores the resting pose', async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.locator('.surprise-scene').scrollIntoViewIfNeeded();
+  const movement = await page.evaluate(async () => {
+    const character = document.querySelector('.monkey-character')!;
+    const branch = document.querySelector('.monkey-branch')!;
+    const characterFrames: string[] = [];
+    const branchFrames: number[] = [];
+    for (let i = 0; i < 12; i++) {
+      await new Promise(requestAnimationFrame);
+      characterFrames.push(getComputedStyle(character).transform);
+      branchFrames.push(branch.getBoundingClientRect().x);
+    }
+    return {
+      poses: new Set(characterFrames).size,
+      branchTravel: Math.max(...branchFrames) - Math.min(...branchFrames),
+    };
+  });
+  expect(movement.poses).toBeGreaterThan(1);
+  expect(movement.branchTravel).toBeLessThanOrEqual(1);
+  await expect(page.locator('.monkey-character')).toHaveJSProperty('naturalWidth', 600);
+  await expect(page.locator('.monkey-branch')).toHaveJSProperty('naturalWidth', 600);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(page.locator('.monkey-character')).toHaveCSS('opacity', '1');
+  const restingOffset = await page.evaluate(() => {
+    const character = document.querySelector('.monkey-character')!.getBoundingClientRect();
+    const branch = document.querySelector('.monkey-branch')!.getBoundingClientRect();
+    return Math.abs(character.y - branch.y - branch.height * 0.04);
+  });
+  expect(restingOffset).toBeLessThanOrEqual(1);
+});
+
 test('RSVP validates, saves, reloads and edits both attendance answers', async ({ page }) => {
   await page.getByRole('button', { name: 'Зберегти мою відповідь' }).click();
   await expect(page.locator('#guest-name')).toBeFocused();
@@ -210,6 +265,8 @@ for (const width of [320, 390, 768, 1024, 1440]) {
         expect(Math.abs(cards[0].top - cards[1].top)).toBeLessThanOrEqual(1);
         expect(Math.abs(cards[0].height - cards[1].height)).toBeLessThanOrEqual(1);
       }
+      if (section === '.surprise')
+        await expect(page.locator('.monkey-character')).toHaveCSS('opacity', '1');
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
         section,

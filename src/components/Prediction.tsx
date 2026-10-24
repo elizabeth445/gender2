@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { Artwork } from './Artwork';
+import { PredictionElephant } from './PredictionElephant';
 import { readSaved, saveLocal } from '../lib/storage';
 import { useMotionPreference } from '../hooks/useMotionPreference';
 type Prediction = 'boy' | 'girl';
@@ -15,30 +15,39 @@ export function Prediction() {
   );
   const [stored, setStored] = useState(true);
   const root = useRef<HTMLElement>(null);
+  const flutter = useRef<gsap.core.Timeline | null>(null);
   const reduce = useMotionPreference();
-  const { contextSafe } = useGSAP({ scope: root });
-  const select = contextSafe((value: Prediction) => {
-    setChoice(value);
-    setStored(saveLocal('prediction', value));
-    if (!reduce) {
-      gsap.fromTo(
-        `[data-choice="${value}"] .tag-art`,
-        { scale: 0.94 },
-        {
-          scale: 1,
-          duration: 0.6,
-          ease: 'back.out(1.4)',
-          overwrite: true,
-          clearProps: 'transform',
-        },
-      );
-      gsap.fromTo(
-        '.prediction-response',
-        { opacity: 0, scale: 0.97 },
-        { opacity: 1, scale: 1, duration: 0.5, overwrite: true },
-      );
-    }
-  });
+  const { contextSafe } = useGSAP(
+    () => {
+      if (reduce) {
+        flutter.current?.kill();
+        gsap.set('.ear-flutter', { attr: { scale: 0 } });
+        gsap.set('.prediction-response', { clearProps: 'opacity,transform' });
+      }
+    },
+    { scope: root, dependencies: [reduce] },
+  );
+  const select = (value: Prediction) =>
+    contextSafe(() => {
+      setChoice(value);
+      setStored(saveLocal('prediction', value));
+      flutter.current?.kill();
+      gsap.set('.ear-flutter', { attr: { scale: 0 } });
+      if (!reduce) {
+        const ears = `[data-choice="${value}"] .ear-flutter`;
+        flutter.current = gsap
+          .timeline({ defaults: { ease: 'sine.inOut' } })
+          .to(ears, { attr: { scale: 46 }, duration: 0.22 })
+          .to(ears, { attr: { scale: -32 }, duration: 0.25 })
+          .to(ears, { attr: { scale: 25 }, duration: 0.2 })
+          .to(ears, { attr: { scale: 0 }, duration: 0.3 });
+        gsap.fromTo(
+          '.prediction-response',
+          { opacity: 0, scale: 0.97 },
+          { opacity: 1, scale: 1, duration: 0.5, overwrite: true },
+        );
+      }
+    })();
   return (
     <section
       className="prediction section"
@@ -69,7 +78,7 @@ export function Prediction() {
             >
               <span className="tag-hole" aria-hidden="true" />
               <span className="tag-art">
-                <Artwork name={option.animal} />
+                <PredictionElephant name={option.animal} />
               </span>
               <span className="tag-title">{option.label}</span>
               <span className="tag-note">{option.note}</span>
@@ -82,9 +91,6 @@ export function Prediction() {
         <div className="prediction-response" role="status" aria-live="polite">
           {choice ? (
             <>
-              <span className="small-sprout" aria-hidden="true">
-                ✧
-              </span>
               <p>
                 {stored ? 'Ваш прогноз збережено!' : 'Ваш прогноз обрано.'}
                 <br />

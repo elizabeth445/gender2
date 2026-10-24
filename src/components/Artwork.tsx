@@ -1,4 +1,4 @@
-type Animal = 'giraffe' | 'elephant' | 'elephant-blue' | 'elephant-pink' | 'monkey' | 'foliage';
+type Animal = 'giraffe' | 'elephant' | 'monkey' | 'foliage';
 export function Artwork({
   name,
   className = '',
@@ -9,22 +9,13 @@ export function Artwork({
   eager?: boolean;
 }) {
   const tall = name === 'giraffe' || name === 'monkey';
-  const ribbon = name === 'elephant-blue' || name === 'elephant-pink';
   return (
     <img
       className={`art ${className}`}
       src={`/art/${name}.webp`}
-      width={ribbon ? 600 : 900}
-      height={ribbon ? 624 : tall ? 1350 : name === 'foliage' ? 822 : 935}
-      style={{
-        aspectRatio: ribbon
-          ? '25 / 26'
-          : tall
-            ? '2 / 3'
-            : name === 'foliage'
-              ? '1312 / 1199'
-              : '1230 / 1278',
-      }}
+      width={900}
+      height={tall ? 1350 : name === 'foliage' ? 822 : 935}
+      style={{ aspectRatio: tall ? '2 / 3' : name === 'foliage' ? '1312 / 1199' : '1230 / 1278' }}
       alt=""
       aria-hidden="true"
       loading={eager ? 'eager' : 'lazy'}

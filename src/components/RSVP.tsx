@@ -84,7 +84,16 @@ export function RSVP() {
             <br />
             до <strong>{event.rsvpDeadline}</strong>
           </p>
-          <BotanicalMark />
+          <img
+            className="rsvp-clothesline"
+            src="/art/baby-clothesline.webp"
+            width="720"
+            height="480"
+            style={{ aspectRatio: '3 / 2' }}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
         </div>
         <div className="rsvp-form-area">
           {submitted ? (
@@ -103,7 +112,7 @@ export function RSVP() {
                   : 'Браузер не дозволяє зберегти відповідь. Вона доступна до закриття сторінки й не надіслана організаторам.'}
               </p>
               <button className="text-link" onClick={edit}>
-                Змінити відповідь <span aria-hidden="true">↗</span>
+                Змінити відповідь
               </button>
             </div>
           ) : (
@@ -189,7 +198,7 @@ export function RSVP() {
                 />
               </div>
               <button className="button primary save-answer" type="submit">
-                Зберегти мою відповідь <span aria-hidden="true">↗</span>
+                Зберегти мою відповідь
               </button>
               <p className="local-note">
                 Відповідь зберігається лише у вашому браузері та не надсилається організаторам.

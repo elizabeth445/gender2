@@ -125,9 +125,6 @@ nav {
   border-bottom: 1px solid var(--forest);
   padding: 7px 0;
 }
-.nav-rsvp span {
-  margin-left: 20px;
-}
 .hero {
   position: relative;
   min-height: 800px;
@@ -367,6 +364,14 @@ h1 em {
   position: relative;
   padding: 40px 10px 0;
 }
+.story-balloon {
+  position: absolute;
+  width: clamp(95px, 11vw, 145px);
+  height: auto;
+  top: -65px;
+  right: -10px;
+  pointer-events: none;
+}
 .story-picture > .art {
   position: relative;
   width: 100%;
@@ -489,9 +494,6 @@ h1 em {
   nav > a:first-child {
     display: none;
   }
-  .nav-rsvp span {
-    margin-left: 10px;
-  }
   .hero {
     min-height: 850px;
     height: calc(100svh - 76px);
@@ -612,6 +614,12 @@ h1 em {
     max-width: 320px;
     justify-self: center;
     padding-top: 30px;
+    margin-top: 45px;
+  }
+  .story-balloon {
+    width: 90px;
+    top: -25px;
+    right: -35px;
   }
   .story-picture > .art {
     max-height: 240px;

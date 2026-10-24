@@ -131,7 +131,7 @@ export function Header() {
       <nav aria-label="Основна навігація">
         <a href="#details">Про свято</a>
         <a href="#rsvp" className="nav-rsvp">
-          Ми будемо <span aria-hidden="true">↗</span>
+          Ми будемо
         </a>
       </nav>
     </header>

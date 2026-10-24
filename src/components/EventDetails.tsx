@@ -77,7 +77,7 @@ export function EventDetails() {
             </button>
             {directions ? (
               <a className="text-link" href={directions} target="_blank" rel="noreferrer">
-                Як дістатися ↗
+                Як дістатися
               </a>
             ) : null}
           </div>

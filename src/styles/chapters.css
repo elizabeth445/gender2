@@ -96,7 +96,8 @@
   padding-bottom: 90px;
 }
 .prediction-heading h2 {
-  max-width: 400px;
+  max-width: 460px;
+  font-size: clamp(48px, 6.2vw, 94px);
 }
 .prediction-heading > p {
   font-size: 17px;
@@ -106,8 +107,8 @@
   font-size: 20px;
   display: block;
   text-align: left;
-  transform: rotate(-6deg);
-  max-width: 250px;
+  transform: none;
+  max-width: 340px;
   margin-top: 35px;
 }
 .prediction-options {
@@ -117,12 +118,15 @@
   align-items: stretch;
 }
 .prediction-tag {
+  --tag-paper: #e8f1f8;
+  --tag-accent: #9bb5ca;
+  --tag-selected: #dbeaf5;
   position: relative;
   width: 235px;
   min-width: 0;
   min-height: 355px;
-  border: 2px solid #c3c9ad;
-  background: var(--paper-light);
+  border: 2px solid var(--tag-accent);
+  background: var(--tag-paper);
   padding: 36px 15px 18px;
   border-radius: 48% 48% 3px 3px / 18% 18% 1px 1px;
   text-align: center;
@@ -133,16 +137,17 @@
     box-shadow 0.2s;
 }
 .prediction-tag:nth-child(2) {
-  background: #f1ebdd;
-  border-color: #d7b7ad;
+  --tag-paper: #f9e9ed;
+  --tag-accent: #cfa4b1;
+  --tag-selected: #f5dce4;
 }
 .prediction-tag:hover {
   border-color: var(--forest);
   box-shadow: 4px 8px 0 #d8d6c566;
 }
 .prediction-tag.selected {
-  border: 2px solid var(--forest);
-  background: #eef0e1;
+  border-color: var(--forest);
+  background: var(--tag-selected);
 }
 .tag-hole {
   position: absolute;
@@ -213,21 +218,15 @@
   max-width: 420px;
   text-align: center;
   margin: 32px auto 0;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  align-items: flex-start;
+  display: grid;
+  justify-items: center;
+  align-content: start;
 }
 .prediction-response p {
   margin: 0;
 }
 .prediction-response p > span {
   font-size: 13px;
-}
-.small-sprout {
-  font-size: 25px;
-  color: var(--forest);
-  line-height: 1;
 }
 .details-section {
   background: #e6e8da;
@@ -267,8 +266,9 @@
   justify-content: space-between;
   margin: 20px 0 35px;
   position: relative;
-  border-bottom: 1px solid #bbc5a8;
-  padding-bottom: 30px;
+  border: 1px solid #b8c4aa;
+  border-radius: 6px;
+  padding: 24px 20px;
   gap: 14px;
 }
 .countdown > div {
@@ -355,9 +355,6 @@
   color: var(--forest);
   display: inline-block;
 }
-.text-link span {
-  margin-left: 18px;
-}
 .text-link:hover {
   color: #2c4124;
   border-color: #2c4124;
@@ -430,8 +427,8 @@
     padding-bottom: 55px;
   }
   .prediction-heading h2 {
-    font-size: 50px;
-    max-width: 270px;
+    font-size: 56px;
+    max-width: 300px;
   }
   .prediction-heading > p {
     font-size: 13px;
@@ -535,7 +532,7 @@
 }
 @media (max-width: 350px) {
   .prediction-heading h2 {
-    font-size: 44px;
+    font-size: 48px;
   }
   .prediction-tag {
     min-height: 246px;
@@ -713,6 +710,19 @@
   object-position: left center;
   z-index: 2;
 }
+.surprise-monkey > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  pointer-events: none;
+}
+.monkey-character {
+  transform: translateY(4%);
+  transform-origin: 51% 15%;
+}
 .surprise-leaf {
   position: absolute;
   width: 280px;
@@ -792,12 +802,12 @@
   font-weight: 400;
   color: var(--forest);
 }
-.rsvp-heading > .botanical-mark {
-  height: 80px;
-  width: 70px;
-  color: var(--forest);
-  margin: 35px 0 0 20px;
-  transform: rotate(-20deg);
+.rsvp-clothesline {
+  display: block;
+  width: min(100%, 360px);
+  height: auto;
+  margin: 30px 0 0 -12px;
+  pointer-events: none;
 }
 .rsvp-form-area {
   padding-top: 10px;
@@ -886,7 +896,6 @@ fieldset {
 }
 .save-answer {
   margin-top: 30px;
-  gap: 37px;
 }
 .local-note {
   font-size: 12px !important;
@@ -931,7 +940,7 @@ fieldset {
   position: relative;
   z-index: 2;
   text-align: center;
-  max-width: 690px;
+  max-width: 800px;
   margin: auto;
 }
 .closing-text > .botanical-mark {
@@ -947,13 +956,13 @@ fieldset {
   color: var(--forest);
 }
 .closing h2 {
-  font-size: clamp(54px, 5.3vw, 76px);
+  font-size: clamp(60px, 6.4vw, 94px);
   margin-top: 30px;
   letter-spacing: -2px;
 }
 .closing-parents {
   font-family: var(--hand);
-  font-size: 29px;
+  font-size: 34px;
   color: var(--forest);
   margin-top: 27px;
 }
@@ -969,7 +978,7 @@ fieldset {
 .closing-butterfly {
   position: absolute;
   right: 8px;
-  top: 145px;
+  top: 60px;
 }
 .closing-art {
   position: absolute;
@@ -1300,8 +1309,9 @@ fieldset {
     margin-top: 23px;
     font-size: 13px;
   }
-  .rsvp-heading > .botanical-mark {
-    display: none;
+  .rsvp-clothesline {
+    width: 230px;
+    margin: 20px auto 0;
   }
   .rsvp-form-area {
     margin-top: 42px;
@@ -1335,7 +1345,7 @@ fieldset {
   }
   .save-answer {
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 27px;
   }
   .local-note {
@@ -1360,16 +1370,16 @@ fieldset {
     margin-bottom: 21px;
   }
   .closing-quote {
-    font-size: 22px;
+    font-size: 25px;
   }
   .closing h2 {
-    font-size: 49px;
+    font-size: 56px;
     line-height: 1.08;
     letter-spacing: -1.5px;
     margin-top: 28px;
   }
   .closing-parents {
-    font-size: 27px;
+    font-size: 31px;
     margin-top: 24px;
   }
   .closing-date {
@@ -1378,7 +1388,7 @@ fieldset {
   }
   .closing-butterfly {
     right: 60px;
-    top: 115px;
+    top: 24px;
     width: 30px;
     height: 30px;
   }
@@ -1524,10 +1534,10 @@ fieldset {
     font-size: 52px;
   }
   .closing h2 {
-    font-size: 44px;
+    font-size: 48px;
   }
   .closing-quote {
-    font-size: 20px;
+    font-size: 22px;
   }
   .closing {
     min-height: 740px;
@@ -1604,7 +1614,7 @@ fieldset {
     font-size: 13px;
   }
   .closing-quote {
-    font-size: 27px;
+    font-size: 32px;
   }
   .colophon {
     font-size: 12px;
